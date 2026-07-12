@@ -88,7 +88,7 @@ export default function CalculatorSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
           >
-            <h2 className="text-3xl font-extrabold text-text-dark leading-tight mb-6">
+            <h2 className="text-3xl font-black text-text-dark leading-tight mb-6">
               ประเมินความต้องการพื้นที่
               <br />
               สำหรับธุรกิจของคุณ

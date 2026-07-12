@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
         >
           <div>
             <SectionLabel number="05" />
-            <h2 className="text-3xl font-extrabold text-text-dark mt-2">
+            <h2 className="text-3xl font-black text-text-dark mt-2">
               ผู้ประกอบการกว่า 150 ราย
               <br />
               เลือกอุดรธานี

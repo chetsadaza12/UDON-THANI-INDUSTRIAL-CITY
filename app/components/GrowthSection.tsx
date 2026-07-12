@@ -5,130 +5,108 @@ import Image from "next/image";
 import SectionLabel from "./ui/SectionLabel";
 import CountUp from "./ui/CountUp";
 
-const INFRA_STATS = [
-  {
-    label: "พื้นที่กว่า",
-    value: 2170,
-    unit: " ไร่",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-    ),
-  },
-  {
-    label: "เงินลงทุน",
-    value: 22000,
-    unit: " ล้านบาท",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <line x1="12" y1="1" x2="12" y2="23" />
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-      </svg>
-    ),
-  },
-  {
-    label: "จ้างงานกว่า",
-    value: 20000,
-    unit: " ตำแหน่ง",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-  },
-  {
-    label: "ไฟฟ้ากำลังผลิต",
-    value: 100,
-    unit: " MW",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    ),
-  },
-  {
-    label: "น้ำประปา",
-    value: 8000,
-    unit: " ลบ.ม./วัน",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
-      </svg>
-    ),
-  },
-  {
-    label: "ระบบบำบัดน้ำเสีย",
-    value: 6400,
-    unit: " ลบ.ม./วัน",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-      </svg>
-    ),
-  },
+const STATS = [
+  { label: "พื้นที่โครงการ", value: 2170, unit: "ไร่", note: "นิคมฯ แห่งแรกของภาคอีสาน" },
+  { label: "เงินลงทุนเป้าหมาย", value: 22000, unit: "ล้านบาท", note: "สร้างงาน 20,000+ ตำแหน่ง" },
+  { label: "รายได้รัฐต่อปี", value: 2000, unit: "ล้านบาท", note: "เสริมเศรษฐกิจอีสานตอนบน" },
+];
+
+const UTILITIES = [
+  { label: "กำลังไฟฟ้า", value: 100, unit: "MW" },
+  { label: "น้ำประปา", value: 8000, unit: "ลบ.ม. / วัน" },
+  { label: "บำบัดน้ำเสีย", value: 6400, unit: "ลบ.ม. / วัน" },
 ];
 
 export default function GrowthSection() {
   return (
-    <section id="growth" className="py-24 bg-offwhite">
+    <section id="growth" className="py-24 bg-offwhite overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="rounded-2xl overflow-hidden shadow-xl group"
-          >
-            <Image
-              src="/images/power-infrastructure.png"
-              alt="โครงสร้างพื้นฐาน สายส่งไฟฟ้าแรงสูง"
-              width={600}
-              height={400}
-              className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </motion.div>
-
-          {/* Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-          >
+        {/* === Top Row: Label + Heading + Image === */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-x-20 gap-y-10 mb-20">
+          {/* Left: Text block */}
+          <div>
             <SectionLabel number="03" />
-            <h2 className="text-4xl font-extrabold text-text-dark leading-tight mb-2">
-              พร้อมรองรับ
-              <br />
-              การเติบโตของธุรกิจ
+            <h2 className="text-4xl lg:text-5xl font-black text-text-dark leading-[1.1] mt-4">
+              โครงสร้างพื้นฐาน<br />
+              <span className="text-primary">ครบวงจร</span> พร้อม<br />
+              รองรับทุกธุรกิจ
             </h2>
-            <p className="text-sm text-text-light mb-8">
-              นิคมอุตสาหกรรมแห่งแรกของภาคอีสาน พร้อมโครงสร้างพื้นฐานครบวงจร
+            <p className="text-text-light mt-6 text-base leading-relaxed max-w-sm">
+              นิคมอุตสาหกรรมแห่งแรกของภาคอีสาน ออกแบบมาเพื่อ
+              เป็นศูนย์กลางอุตสาหกรรมและโลจิสติกส์แห่งอนุภูมิภาคลุ่มน้ำโขง
             </p>
 
-            <div className="flex flex-col gap-5">
-              {INFRA_STATS.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-4 py-3">
-                  <div className="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
-                    {stat.icon}
+            {/* Inline utility row — desktop only */}
+            <div className="hidden lg:flex gap-8 mt-10 pt-8 border-t border-gray-100">
+              {UTILITIES.map((u) => (
+                <div key={u.label}>
+                  <div className="text-xs text-text-light uppercase tracking-wider mb-1">
+                    {u.label}
                   </div>
-                  <span className="text-base text-text-dark">
-                    {stat.label}{" "}
-                    <strong className="font-extrabold text-primary">
-                      <CountUp value={stat.value} suffix={stat.unit} duration={2} />
-                    </strong>
-                  </span>
+                  <div className="text-lg font-bold text-text-dark">
+                    <CountUp value={u.value} suffix={` ${u.unit}`} duration={1.8} />
+                  </div>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Right: Large feature image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: [0.2, 0.6, 0.3, 1] }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px]">
+              <Image
+                src="/images/power-infrastructure.png"
+                alt="โครงสร้างพื้นฐาน"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 55vw"
+              />
+            </div>
+            {/* Floating label pill — breaks the image edge */}
+            <div className="absolute -bottom-4 left-6 bg-primary text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+              ระบบไฟฟ้า 100 MW — เสถียรเต็มกำลัง
+            </div>
           </motion.div>
+        </div>
+
+        {/* === Big Numbers Row (3 stats spanning full width) === */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden">
+          {STATS.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: false, amount: 0.4 }}
+              transition={{ delay: i * 0.15 }}
+              className="bg-white p-8 lg:p-10"
+            >
+              <span className="text-xs font-semibold text-text-light uppercase tracking-widest">
+                {s.label}
+              </span>
+              <div className="text-4xl lg:text-5xl font-black text-text-dark mt-3 mb-2 tracking-tight">
+                <CountUp value={s.value} suffix={s.unit} duration={2.5} />
+              </div>
+              <p className="text-sm text-text-light">{s.note}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile utility row */}
+        <div className="lg:hidden grid grid-cols-3 gap-3 mt-6">
+          {UTILITIES.map((u) => (
+            <div key={u.label} className="text-center py-3">
+              <div className="text-xs text-text-light mb-1">{u.label}</div>
+              <div className="text-sm font-bold text-text-dark">
+                <CountUp value={u.value} suffix={` ${u.unit}`} duration={1.8} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

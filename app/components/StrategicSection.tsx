@@ -6,37 +6,9 @@ import SectionLabel from "./ui/SectionLabel";
 import CountUp from "./ui/CountUp";
 
 const STATS = [
-  {
-    value: 14,
-    unit: " กม.",
-    label: "สนามบินอุดรธานี",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 502.4 502.4" fill="#C41E3A">
-        <path d="M480.766,336h-69.333L306.9,226.133l176-106.667c5.333-3.2,8.533-8.533,9.6-14.933c0-6.4-2.133-12.8-6.4-17.067 L453.033,54.4c-5.333-5.333-12.8-7.467-20.267-5.333l-236.8,59.733l-78.933-84.267l-1.067-1.067C99.966,8.534,79.7,0,59.433,0 c-16,0-32,6.4-42.667,17.067C-7.767,42.667-4.567,86.4,24.233,117.333L25.3,118.4l83.2,78.933c0,1.067-1.067,2.133-1.067,2.133 l-60.8,236.8c-2.133,7.467,0,14.933,5.333,20.267L85.033,489.6c4.267,4.267,9.6,6.4,14.933,6.4c0,0,1.067,0,2.133-1.067 c6.4,0,11.733-4.267,14.933-9.6L224.766,307.2l112,105.6v68.267c0,11.733,9.6,21.333,21.333,21.333s20.267-9.6,21.333-21.333 v-40.533c4.267,1.067,8.533,1.067,12.8,1.067c13.867,0,25.6-5.333,34.133-16c11.733-11.733,16-29.867,12.8-46.933h41.6 c11.733,0,21.333-8.533,21.333-21.333C502.1,345.6,492.5,336,480.766,336z" />
-      </svg>
-    ),
-  },
-  {
-    value: 53,
-    unit: " กม.",
-    label: "ด่านหนองคาย",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 190 256" fill="#C41E3A">
-        <path d="M187.4,155.43l-14.51,15.53l-14.11-12.94V254H113.7v-59h-38v59H30.48v-96.78l-14.34,12.95L2,154.24l88.21-78.95V2H114 c6.5,0,7.63,4.31,8.41,5.08c2.4,2.33,4.09,3.75,7.48,3.75h17.3V49.1h-17.23c-3.39,0-5.08-1.41-7.48-3.74 c-0.85-0.85-1.91-5.09-8.41-5.09h-15.6v33.9L187.4,155.43z" />
-      </svg>
-    ),
-  },
-  {
-    value: 610,
-    unit: " กม.",
-    label: "ท่าเรือแหลมฉบัง",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C41E3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-      </svg>
-    ),
-  },
+  { value: 14, unit: " กม.", label: "สนามบินนานาชาติอุดรธานี" },
+  { value: 53, unit: " กม.", label: "ด่านหนองคาย — สะพานมิตรภาพไทย-ลาว" },
+  { value: 610, unit: " กม.", label: "ท่าเรือน้ำลึกแหลมฉบัง" },
 ];
 
 // Mini-player sizes
@@ -266,13 +238,13 @@ export default function StrategicSection() {
     <>
       <section ref={sectionRef} id="strategic" className="py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-20 items-center">
             {/* Main Video */}
             <motion.div
               style={{ opacity: mapOpacity, scale: mapScale }}
-              className="overflow-hidden"
+              className="relative lg:order-1"
             >
-              <div className="relative group">
+              <div className="relative group overflow-hidden rounded-2xl">
                 <video
                   ref={videoRef}
                   src="/videos/logistics.mp4"
@@ -282,9 +254,11 @@ export default function StrategicSection() {
                   muted
                   playsInline
                   preload="auto"
-                  className="w-full h-auto object-cover rounded-2xl"
+                  className="w-full aspect-[4/3] object-cover"
                 />
-                <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Subtle frame border — not a generic shadow */}
+                <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl pointer-events-none" />
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <AudioControls
                     isMuted={isMuted}
                     volume={volume}
@@ -293,56 +267,70 @@ export default function StrategicSection() {
                   />
                 </div>
               </div>
+              {/* Caption that breaks below — editorial style */}
+              <p className="mt-3 text-xs text-text-light tracking-wide">
+                วิดีโอแนะนำโครงการ — ที่ตั้งและโครงข่ายคมนาคมโดยรอบ
+              </p>
             </motion.div>
 
-            {/* Info */}
-            <div>
+            {/* Info — asymmetric editorial layout */}
+            <div className="lg:order-2">
               <SectionLabel number="02" />
-              <motion.h2
-                initial={{ opacity: 0, y: -40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-                className="text-4xl font-extrabold text-text-dark leading-tight mb-6"
-              >
-                จุดยุทธศาสตร์
-                <br />
-                ที่เชื่อม 4 ประเทศ
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, type: "spring", bounce: 0.4, delay: 0.2 }}
-                className="text-base text-text-light leading-relaxed mb-8"
-              >
-                เชื่อมโยงไทย ลาว เวียดนาม และจีน
-                <br />
-                ผ่านเส้นทางเศรษฐกิจหลักของภูมิภาค
-              </motion.p>
+              <h2 className="text-4xl lg:text-5xl font-black text-text-dark leading-[1.2] mt-4">
+                ยุทธศาสตร์<br />
+                <span className="text-primary">ประตูสู่อนุภูมิภาค</span>ลุ่มน้ำโขง
+              </h2>
+              <p className="text-text-light mt-5 text-base leading-relaxed max-w-md">
+                ตำแหน่งบนระเบียงเศรษฐกิจ GMS เชื่อมไทย&ndash;ลาว&ndash;เวียดนาม&ndash;จีนตอนใต้
+                ด้วยโครงข่ายถนน ทางราง และอากาศยาน
+              </p>
 
-              {/* Stat cards */}
-              <div className="flex gap-4 max-sm:flex-col">
-                {STATS.map((stat, i) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7, ease: [0.17, 0.55, 0.55, 1], delay: i * 0.1 }}
-                    className="flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-4 flex-1 transition-all duration-300 hover:border-primary hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1"
-                  >
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                      {stat.icon}
+              {/* Stats — connected route line */}
+              <div className="mt-12">
+                {/* Visual route bar */}
+                <div className="relative flex items-center mb-6">
+                  {/* Continuous horizontal line */}
+                  <div className="absolute left-0 right-0 h-0.5 bg-gray-200" />
+                  {/* Three dots on the line */}
+                  {STATS.map((_, i) => (
+                    <div
+                      key={i}
+                      className="relative flex-1 flex justify-center"
+                    >
+                      <div className="w-3 h-3 rounded-full border-2 border-primary bg-white" />
                     </div>
-                    <div>
-                      <div className="text-xl font-extrabold text-primary">
-                      <CountUp value={stat.value} suffix={stat.unit} duration={1.5} />
-                    </div>
-                      <div className="text-xs text-text-light leading-tight">{stat.label}</div>
-                    </div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
+
+                {/* Numbers + labels */}
+                <div className="flex flex-col sm:flex-row gap-6 sm:gap-0">
+                  {STATS.map((stat, i) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 12 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.5 }}
+                      transition={{ delay: 0.2 + i * 0.12 }}
+                      className="flex-1"
+                    >
+                      <div className="text-4xl lg:text-5xl font-black text-text-dark tracking-tight">
+                        <CountUp value={stat.value} suffix={stat.unit} duration={1.8} />
+                      </div>
+                      <div className="text-xs text-text-light mt-2 leading-snug">
+                        {stat.label}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Divider with facts */}
+              <div className="mt-8 pt-6 border-t border-gray-100 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-text-light">
+                <span>ครอบคลุม 4 ประเทศ</span>
+                <span className="w-1 h-1 rounded-full bg-primary/40 hidden sm:block" />
+                <span>รัศมีการขนส่ง 600 กม.</span>
+                <span className="w-1 h-1 rounded-full bg-primary/40 hidden sm:block" />
+                <span>นิคมฯ แห่งแรกของภาคอีสาน</span>
               </div>
             </div>
           </div>
