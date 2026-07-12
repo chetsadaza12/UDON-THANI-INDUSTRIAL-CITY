@@ -25,6 +25,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ======== Custom Scrollbar ======== */
+/* Firefox */
+html {
+  scrollbar-width: thin !important;
+  scrollbar-color: #C41E3A #F0F0F0 !important;
+}
+
+/* Chrome / Edge / Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #F0F0F0;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: #C41E3A;
+  border-radius: 5px;
+  border: 2px solid #F0F0F0;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: #9A1530;
+}
+
 /* Scrollbar hide utility */
 .scrollbar-hide {
   -ms-overflow-style: none;

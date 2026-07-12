@@ -3,10 +3,12 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useCallback, useEffect } from "react";
 import SectionLabel from "./ui/SectionLabel";
+import CountUp from "./ui/CountUp";
 
 const STATS = [
   {
-    value: "14 กม.",
+    value: 14,
+    unit: " กม.",
     label: "สนามบินอุดรธานี",
     icon: (
       <svg width="20" height="20" viewBox="0 0 502.4 502.4" fill="#C41E3A">
@@ -15,7 +17,8 @@ const STATS = [
     ),
   },
   {
-    value: "53 กม.",
+    value: 53,
+    unit: " กม.",
     label: "ด่านหนองคาย",
     icon: (
       <svg width="20" height="20" viewBox="0 0 190 256" fill="#C41E3A">
@@ -24,7 +27,8 @@ const STATS = [
     ),
   },
   {
-    value: "610 กม.",
+    value: 610,
+    unit: " กม.",
     label: "ท่าเรือแหลมฉบัง",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C41E3A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -332,7 +336,9 @@ export default function StrategicSection() {
                       {stat.icon}
                     </div>
                     <div>
-                      <div className="text-xl font-extrabold text-primary">{stat.value}</div>
+                      <div className="text-xl font-extrabold text-primary">
+                      <CountUp value={stat.value} suffix={stat.unit} duration={1.5} />
+                    </div>
                       <div className="text-xs text-text-light leading-tight">{stat.label}</div>
                     </div>
                   </motion.div>
