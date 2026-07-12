@@ -99,13 +99,13 @@ const CONTACT_ITEMS = [
 export default function Footer() {
   return (
     <footer className="bg-primary-dark text-white py-5">
-      <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-center gap-12 flex-wrap max-sm:flex-col max-sm:gap-4">
+      <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 flex-wrap">
         {CONTACT_ITEMS.map((item) => (
           <Link
             key={item.label}
             href={item.href}
             target={item.target}
-            className="flex items-center gap-2 text-sm font-medium opacity-95 hover:opacity-100 transition-opacity"
+            className="flex items-center gap-2 text-sm font-medium py-3.5 opacity-95 hover:opacity-100 transition-opacity"
           >
             {item.icon}
             {item.label}

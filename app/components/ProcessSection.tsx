@@ -109,8 +109,8 @@ const STEPS = [
 export default function ProcessSection() {
   return (
     <section id="process" className="py-24 bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white relative overflow-hidden">
-      {/* Decorative circle */}
-      <div className="absolute -top-1/2 -right-1/5 w-[600px] h-[600px] bg-white/5 rounded-full" />
+      {/* Decorative circle — contained by overflow-hidden on parent */}
+      <div className="absolute -top-1/4 -right-1/4 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-white/5 rounded-full" />
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.5fr] gap-12 items-center">
@@ -140,7 +140,7 @@ export default function ProcessSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="grid grid-cols-5 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
           >
             {STEPS.map((step) => (
               <div

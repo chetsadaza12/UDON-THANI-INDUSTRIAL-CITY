@@ -132,7 +132,7 @@ export default function CalculatorSection() {
               ผลลัพธ์ที่แนะนำ
             </h3>
 
-            <div className="grid grid-cols-3 max-md:grid-cols-1 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="p-5 bg-white rounded-xl border border-gray-200">
                 <h4 className="text-sm font-bold text-text-dark mb-4">โซนที่แนะนำ</h4>
                 <p className="text-xs text-text-light flex items-start gap-2">

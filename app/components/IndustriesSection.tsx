@@ -177,7 +177,7 @@ export default function IndustriesSection() {
                   mass: 0.8,
                   delay: i * 0.08,
                 }}
-                className="industry-card min-w-[calc(33.333%-1rem)] flex-shrink-0 scroll-snap-align-start rounded-2xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
+                className="industry-card min-w-[85vw] sm:min-w-[45vw] lg:min-w-[calc(33.333%-1rem)] flex-shrink-0 scroll-snap-align-start rounded-2xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
               >
                 <div className="h-[220px] overflow-hidden">
                   <Image
@@ -215,13 +215,19 @@ export default function IndustriesSection() {
             <button
               key={i}
               onClick={() => scrollTo(i)}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`rounded-full transition-all duration-300 cursor-pointer flex items-center justify-center ${
                 i === activeIndex
-                  ? "bg-primary w-6"
-                  : "bg-gray-300 w-2"
+                  ? "bg-primary w-11 h-11"
+                  : "bg-gray-300 w-11 h-11"
               }`}
               aria-label={`หน้า ${i + 1}`}
-            />
+            >
+              <span className={`rounded-full transition-all ${
+                i === activeIndex
+                  ? "bg-primary w-6 h-2"
+                  : "bg-gray-300 w-2 h-2"
+              }`} />
+            </button>
           ))}
         </motion.div>
       </div>

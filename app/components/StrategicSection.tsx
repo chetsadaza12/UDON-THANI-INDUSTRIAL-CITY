@@ -17,6 +17,11 @@ const MINI_SIZES: Record<string, { w: number; h: number }> = {
   lg: { w: 400, h: 225 },
 };
 
+// Clamp mini-player width to viewport minus margins
+function clampMiniWidth(w: number): string {
+  return `min(${w}px, calc(100vw - 32px))`;
+}
+
 // ============================================================
 // Audio controls shared by both players
 // ============================================================
@@ -36,7 +41,7 @@ function AudioControls({
     <div className="flex items-center gap-2">
       <button
         onClick={onToggleMute}
-        className="w-9 h-9 rounded-full bg-black/60 backdrop-blur flex items-center justify-center text-white hover:bg-black/80 transition-colors shrink-0"
+        className="w-11 h-11 rounded-full bg-black/60 backdrop-blur flex items-center justify-center text-white hover:bg-black/80 transition-colors shrink-0"
         aria-label={isMuted ? "เปิดเสียง" : "ปิดเสียง"}
       >
         {isMuted ? (
@@ -346,7 +351,7 @@ export default function StrategicSection() {
         }
         transition={{ duration: 0.3, ease: [0.17, 0.55, 0.55, 1] }}
         className="fixed z-[9999] bottom-4 right-4 shadow-2xl rounded-xl overflow-hidden border border-gray-700 bg-black"
-        style={{ width: size.w }}
+        style={{ width: clampMiniWidth(size.w) }}
       >
         {/* Video */}
         <div className="relative group/mini">
@@ -358,8 +363,7 @@ export default function StrategicSection() {
             muted
             playsInline
             preload="auto"
-            className="w-full object-cover"
-            style={{ height: size.h }}
+            className="w-full aspect-video object-cover"
           />
 
           {/* Top bar (hover) */}
@@ -371,7 +375,7 @@ export default function StrategicSection() {
               {/* Toggle size */}
               <button
                 onClick={toggleMiniSize}
-                className="w-7 h-7 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                className="w-11 h-11 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                 aria-label={miniSize === "sm" ? "ขยาย" : "ย่อ"}
               >
                 {miniSize === "sm" ? (
@@ -394,7 +398,7 @@ export default function StrategicSection() {
               {/* Scroll to section */}
               <button
                 onClick={scrollToSection}
-                className="w-7 h-7 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                className="w-11 h-11 rounded-full bg-black/50 flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                 aria-label="กลับไปวิดีโอเต็ม"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

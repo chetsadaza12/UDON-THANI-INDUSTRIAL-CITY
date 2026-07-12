@@ -6,15 +6,15 @@ import SectionLabel from "./ui/SectionLabel";
 import CountUp from "./ui/CountUp";
 
 const STATS = [
-  { label: "พื้นที่โครงการ", value: 2170, unit: "ไร่", note: "นิคมฯ แห่งแรกของภาคอีสาน" },
-  { label: "เงินลงทุนเป้าหมาย", value: 22000, unit: "ล้านบาท", note: "สร้างงาน 20,000+ ตำแหน่ง" },
-  { label: "รายได้รัฐต่อปี", value: 2000, unit: "ล้านบาท", note: "เสริมเศรษฐกิจอีสานตอนบน" },
+  { label: "พื้นที่โครงการ", value: 2170, unit: " ไร่", note: "นิคมฯ แห่งแรกของภาคอีสาน" },
+  { label: "เงินลงทุนเป้าหมาย", value: 22000, unit: " ล้านบาท", note: "สร้างงาน 20,000+ ตำแหน่ง" },
+  { label: "รายได้รัฐต่อปี", value: 2000, unit: " ล้านบาท", note: "เสริมเศรษฐกิจอีสานตอนบน" },
 ];
 
 const UTILITIES = [
-  { label: "กำลังไฟฟ้า", value: 100, unit: "MW" },
-  { label: "น้ำประปา", value: 8000, unit: "ลบ.ม. / วัน" },
-  { label: "บำบัดน้ำเสีย", value: 6400, unit: "ลบ.ม. / วัน" },
+  { label: "กำลังไฟฟ้า", value: 100, unit: " MW" },
+  { label: "น้ำประปา", value: 8000, unit: " ลบ.ม. / วัน" },
+  { label: "บำบัดน้ำเสีย", value: 6400, unit: " ลบ.ม. / วัน" },
 ];
 
 export default function GrowthSection() {
@@ -89,8 +89,10 @@ export default function GrowthSection() {
               <span className="text-xs font-semibold text-text-light uppercase tracking-widest">
                 {s.label}
               </span>
-              <div className="text-4xl lg:text-5xl font-black text-text-dark mt-3 mb-2 tracking-tight">
-                <CountUp value={s.value} suffix={s.unit} duration={2.5} />
+              <div className="text-2xl sm:text-4xl lg:text-5xl font-black text-text-dark mt-3 mb-2 tracking-tight">
+                <span className="whitespace-nowrap">
+                  <CountUp value={s.value} suffix={s.unit} duration={2.5} />
+                </span>
               </div>
               <p className="text-sm text-text-light">{s.note}</p>
             </motion.div>

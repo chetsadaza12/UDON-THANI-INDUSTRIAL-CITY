@@ -29,7 +29,7 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 via-30% via-black/20 via-60% to-transparent" />
       </div>
 
-      <div className="w-full max-w-[1200px] mx-auto px-6 ml-12">
+      <div className="w-full max-w-[1200px] mx-auto px-6 sm:ml-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

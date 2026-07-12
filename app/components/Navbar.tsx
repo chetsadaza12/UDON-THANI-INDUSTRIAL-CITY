@@ -40,7 +40,7 @@ export default function Navbar() {
             alt="โลโก้เมืองอุตสาหกรรมอุดรธานี"
             width={40}
             height={40}
-            className="w-10 h-10 rounded"
+            className="w-11 h-11 rounded"
           />
           <div className="text-sm font-bold text-text-dark leading-tight">
             เมืองอุตสาหกรรมอุดรธานี
@@ -72,7 +72,7 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="lg:hidden flex flex-col gap-1.5 bg-none p-2"
+          className="lg:hidden flex flex-col items-center justify-center gap-1.5 bg-none w-11 h-11"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "ปิดเมนู" : "เปิดเมนู"}
         >
@@ -106,7 +106,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={closeMenu}
-              className="px-3 py-3 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
+              className="px-4 py-3.5 rounded-lg text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
             >
               {link.label}
             </Link>
@@ -114,7 +114,7 @@ export default function Navbar() {
           <Link
             href="#cta"
             onClick={closeMenu}
-            className="bg-primary text-white px-5 py-3 rounded-lg font-semibold text-sm text-center mt-2 hover:bg-primary-dark transition-colors"
+            className="bg-primary text-white px-5 py-3.5 rounded-lg font-semibold text-sm text-center mt-2 hover:bg-primary-dark transition-colors"
           >
             ขอใบเสนอราคา
           </Link>

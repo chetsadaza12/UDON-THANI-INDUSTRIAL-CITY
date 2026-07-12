@@ -56,7 +56,7 @@ export default function TestimonialsSection() {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="overflow-hidden max-md:h-[250px]"
+            className="overflow-hidden h-[250px] md:h-auto"
           >
             <Image
               src="/images/logistics-warehouse.png"
@@ -79,7 +79,7 @@ export default function TestimonialsSection() {
             <div className="flex flex-col gap-4">
               {BENEFITS.map((b) => (
                 <div key={b.label} className="flex items-start gap-3">
-                  <div className="w-7 h-7 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
                     <svg
                       width="14"
                       height="14"
@@ -118,7 +118,7 @@ export default function TestimonialsSection() {
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="overflow-hidden max-md:hidden"
+            className="overflow-hidden hidden md:block"
           >
             <Image
               src="/images/train-logistics.png"
@@ -138,7 +138,7 @@ export default function TestimonialsSection() {
         >
           <Link
             href="#"
-            className="inline-flex items-center gap-2 px-8 py-3 border-2 border-gray-300 rounded-full font-semibold text-sm text-text-dark transition-all duration-300 hover:border-primary hover:text-primary"
+            className="inline-flex items-center gap-2 px-8 py-3.5 border-2 border-gray-300 rounded-full font-semibold text-sm text-text-dark transition-all duration-300 hover:border-primary hover:text-primary"
           >
             ดูกรณีศึกษาทั้งหมด
             <svg
