@@ -145,7 +145,7 @@ export default function ProcessSection() {
             {STEPS.map((step) => (
               <div
                 key={step.number}
-                className="text-center p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/15 transition-all duration-300 hover:bg-white/15 hover:-translate-y-1"
+                className="text-center p-4 sm:p-6 rounded-xl bg-white/10 backdrop-blur-lg border border-white/15 transition-all duration-300 hover:bg-white/15 hover:-translate-y-1"
               >
                 <div className="text-xl font-extrabold opacity-60 mb-3">
                   {step.number}

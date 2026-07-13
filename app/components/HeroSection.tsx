@@ -34,14 +34,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-          className="relative z-10 text-white max-w-[650px] pt-28"
+          className="relative z-10 text-white max-w-[650px] pt-20 sm:pt-28"
         >
           <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-black leading-tight mb-6 drop-shadow-lg">
             เมืองอุตสาหกรรม
             <br />
             อุดรธานี
           </h1>
-          <p className="text-lg font-light leading-relaxed mb-10 opacity-90 drop-shadow-md">
+          <p className="text-base sm:text-lg font-light leading-relaxed mb-8 sm:mb-10 opacity-90 drop-shadow-md">
             ประตูการลงทุนสู่ภูมิภาคลุ่มแม่น้ำโขง
             <br />
             รองรับอุตสาหกรรมยุคใหม่

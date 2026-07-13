@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
         >
           <div>
             <SectionLabel number="05" />
-            <h2 className="text-3xl font-black text-text-dark mt-2">
+            <h2 className="text-2xl sm:text-3xl font-black text-text-dark mt-2 leading-tight">
               ผู้ประกอบการกว่า 150 ราย
               <br />
               เลือกอุดรธานี
@@ -44,31 +44,39 @@ export default function TestimonialsSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.17, 0.55, 0.55, 1] }}
-          className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] rounded-2xl bg-white shadow-lg"
+          className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] rounded-2xl bg-white shadow-lg overflow-hidden"
         >
           {/* Left image — slide from left, leave to left */}
           <motion.div
-            initial={{ x: "-100%", opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
+            variants={{
+              hidden: { x: "-100%", opacity: 0 },
+              visible: { x: 0, opacity: 1 },
+            }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="overflow-hidden h-[250px] md:h-auto"
+            className="overflow-hidden h-[200px] md:h-full md:min-h-[350px]"
           >
             <Image
               src="/images/logistics-warehouse.png"
               alt="ABC Logistics Co., Ltd."
               width={400}
               height={350}
-              className="w-full h-full object-cover min-h-[350px]"
+              className="w-full h-full object-cover"
             />
           </motion.div>
 
           {/* Center info */}
-          <div className="p-10 flex flex-col justify-center">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.17, 0.55, 0.55, 1] }}
+            className="p-6 sm:p-10 flex flex-col justify-center"
+          >
             <h3 className="text-2xl font-bold text-text-dark mb-2">
               ABC Logistics Co., Ltd.
             </h3>
@@ -110,22 +118,23 @@ export default function TestimonialsSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right image — slide from right, leave to right */}
           <motion.div
-            initial={{ x: "100%", opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: false, amount: 0.3 }}
+            variants={{
+              hidden: { x: "100%", opacity: 0 },
+              visible: { x: 0, opacity: 1 },
+            }}
             transition={{ duration: 0.8, ease: [0.17, 0.55, 0.55, 1] }}
-            className="overflow-hidden hidden md:block"
+            className="overflow-hidden h-[200px] md:h-full md:min-h-[350px]"
           >
             <Image
               src="/images/train-logistics.png"
               alt="การขนส่งสินค้า"
               width={400}
               height={350}
-              className="w-full h-full object-cover min-h-[350px]"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         </motion.div>

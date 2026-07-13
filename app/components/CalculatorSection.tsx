@@ -70,7 +70,7 @@ export default function CalculatorSection() {
   const percentage = ((sliderIndex) / (SLIDER_VALUES.length - 1)) * 100;
 
   return (
-    <section id="calculator" className="py-24 bg-white">
+    <section id="calculator" className="py-24 bg-white overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0 }}

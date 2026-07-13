@@ -79,7 +79,8 @@ export default function IndustriesSection() {
     const el = carouselRef.current;
     const card = el?.querySelector(".industry-card") as HTMLElement;
     if (!el || !card) return;
-    const amount = card.offsetWidth + 24;
+    const gap = window.innerWidth < 640 ? 16 : 24;
+    const amount = card.offsetWidth + gap;
     scrollingRef.current = true;
     el.scrollTo({ left: index * amount, behavior: "smooth" });
     indexRef.current = index;
@@ -93,7 +94,8 @@ export default function IndustriesSection() {
     if (!el) return;
     const card = el.querySelector(".industry-card") as HTMLElement;
     if (!card) return;
-    const amount = card.offsetWidth + 24;
+    const gap = window.innerWidth < 640 ? 16 : 24;
+    const amount = card.offsetWidth + gap;
     const idx = Math.round(el.scrollLeft / amount);
     indexRef.current = idx;
     setActiveIndex(idx);
@@ -109,7 +111,7 @@ export default function IndustriesSection() {
   }, [isPaused, scrollTo]);
 
   return (
-    <section id="industries" className="py-24 bg-white overflow-hidden">
+    <section id="industries" className="py-24 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,7 +129,7 @@ export default function IndustriesSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex items-center justify-between mb-10"
         >
-          <h2 className="text-3xl font-black text-text-dark">
+          <h2 className="text-2xl sm:text-3xl font-black text-text-dark leading-tight">
             เราออกแบบมาเพื่อ
             <br />
             อุตสาหกรรมเหล่านี้
@@ -158,28 +160,27 @@ export default function IndustriesSection() {
         <div
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          className="overflow-hidden"
         >
           <div
             ref={carouselRef}
             onScroll={handleScroll}
-            className="flex gap-6 overflow-x-auto scrollbar-hide scroll-snap-x mandatory pb-4"
+            className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide scroll-snap-x mandatory pb-4"
           >
             {INDUSTRIES.map((ind, i) => (
               <motion.div
                 key={ind.title}
-                initial={{ opacity: 0, x: 60, scale: 0.92 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.15 }}
                 transition={{
-                  type: "spring",
-                  stiffness: 80,
-                  damping: 18,
-                  mass: 0.8,
+                  duration: 0.5,
                   delay: i * 0.08,
+                  ease: [0.17, 0.55, 0.55, 1],
                 }}
-                className="industry-card min-w-[85vw] sm:min-w-[45vw] lg:min-w-[calc(33.333%-1rem)] flex-shrink-0 scroll-snap-align-start rounded-2xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
+                className="industry-card w-[70vw] sm:w-[42vw] lg:w-[calc(33.333%-1rem)] flex-shrink-0 scroll-snap-align-start rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
               >
-                <div className="h-[220px] overflow-hidden">
+                <div className="h-[160px] sm:h-[220px] overflow-hidden rounded-t-2xl">
                   <Image
                     src={ind.image}
                     alt={ind.title}
@@ -188,7 +189,7 @@ export default function IndustriesSection() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                     {ind.icon}
                   </div>
@@ -217,15 +218,15 @@ export default function IndustriesSection() {
               onClick={() => scrollTo(i)}
               className={`rounded-full transition-all duration-300 cursor-pointer flex items-center justify-center ${
                 i === activeIndex
-                  ? "bg-primary w-11 h-11"
-                  : "bg-gray-300 w-11 h-11"
+                  ? "bg-primary w-8 h-8 sm:w-11 sm:h-11"
+                  : "bg-gray-300 w-8 h-8 sm:w-11 sm:h-11"
               }`}
               aria-label={`หน้า ${i + 1}`}
             >
               <span className={`rounded-full transition-all ${
                 i === activeIndex
-                  ? "bg-primary w-6 h-2"
-                  : "bg-gray-300 w-2 h-2"
+                  ? "bg-primary w-4 h-1.5 sm:w-6 sm:h-2"
+                  : "bg-gray-300 w-1.5 h-1.5 sm:w-2 sm:h-2"
               }`} />
             </button>
           ))}

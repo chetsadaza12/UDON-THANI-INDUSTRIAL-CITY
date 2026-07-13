@@ -84,12 +84,12 @@ export default function GrowthSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: false, amount: 0.4 }}
               transition={{ delay: i * 0.15 }}
-              className="bg-white p-8 lg:p-10"
+              className="bg-white p-5 sm:p-8 lg:p-10 min-w-0 overflow-hidden"
             >
               <span className="text-xs font-semibold text-text-light uppercase tracking-widest">
                 {s.label}
               </span>
-              <div className="text-2xl sm:text-4xl lg:text-5xl font-black text-text-dark mt-3 mb-2 tracking-tight">
+              <div className="text-xl sm:text-4xl lg:text-5xl font-black text-text-dark mt-2 sm:mt-3 mb-1 sm:mb-2 tracking-tight">
                 <span className="whitespace-nowrap">
                   <CountUp value={s.value} suffix={s.unit} duration={2.5} />
                 </span>
@@ -100,7 +100,7 @@ export default function GrowthSection() {
         </div>
 
         {/* Mobile utility row */}
-        <div className="lg:hidden grid grid-cols-3 gap-3 mt-6">
+        <div className="lg:hidden grid grid-cols-3 gap-2 mt-6">
           {UTILITIES.map((u) => (
             <div key={u.label} className="text-center py-3">
               <div className="text-xs text-text-light mb-1">{u.label}</div>

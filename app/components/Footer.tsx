@@ -98,7 +98,7 @@ const CONTACT_ITEMS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-white py-5">
+    <footer className="bg-primary-dark text-white py-6 sm:py-5">
       <div className="max-w-[1200px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-12 flex-wrap">
         {CONTACT_ITEMS.map((item) => (
           <Link
