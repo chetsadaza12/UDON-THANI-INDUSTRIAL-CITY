@@ -108,7 +108,7 @@ const STEPS = [
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="py-24 bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white relative overflow-hidden">
+    <section id="process" className="hidden sm:block py-24 bg-gradient-to-br from-primary-dark via-primary to-primary-light text-white relative overflow-hidden">
       {/* Decorative circle — contained by overflow-hidden on parent */}
       <div className="absolute -top-1/4 -right-1/4 w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] bg-white/5 rounded-full" />
 
