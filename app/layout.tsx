@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProgressBar from "./components/ProgressBar";
+import ContactPanel from "./components/ContactPanel";
 
 const notoSansThai = Noto_Sans_Thai({
   variable: "--font-noto-sans-thai",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ProgressBar />
         <Navbar />
         <main className="flex-1">{children}</main>
+        <ContactPanel />
         <Footer />
       </body>
     </html>
