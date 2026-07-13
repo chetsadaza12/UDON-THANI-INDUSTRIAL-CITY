@@ -1,0 +1,9 @@
+{
+    "id": "@chetsadaza/udon-industrial",
+    "name": "Udon Industrial City",
+    "version": "1.0.0",
+    "entryPoint": {
+        "type": "iframe",
+        "path": "index.html"
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "เมืองอุตสาหกรรมอุดรธานี",
+  "short_name": "UTI City",
+  "description": "นิคมอุตสาหกรรมอุดรธานี ประตูการลงทุนสู่ภูมิภาคลุ่มแม่น้ำโขง",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#C41E3A",
+  "icons": [
+    {
+      "src": "/images/logo.jpeg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/logo.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
